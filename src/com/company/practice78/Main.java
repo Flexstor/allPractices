@@ -6,17 +6,17 @@ public class Main {
 
         for (int i = 1; i <= 180 ; i++) {
             company.hire(new Employee("Operator ", Integer.toString(i),
-                    2000 + (Math.random() * 5000), new Operator()));
+                    2000 + (Math.random() * 3000), new Operator()));
         }
 
         for (int i = 1; i <= 80 ; i++) {
             company.hire(new Employee("Manager", Integer.toString(i),
-                    7000 + (Math.random() * 10000), new Manager()));
+                    7000 + (Math.random() * 3000), new Manager()));
         }
 
         for (int i = 1; i <= 80 ; i++) {
             company.hire(new Employee("TopManager", Integer.toString(i),
-                    15000 + (Math.random() * 25000), new TopManager(company)));
+                    15000 + (Math.random() * 10000), new TopManager(company)));
         }
 
         company.getIncome();
@@ -37,7 +37,7 @@ public class Main {
         Company company1 = new Company();
         company1.hire(new Employee("Shikalov", "Danila", 2000, new Manager()));
         company1.PrintList();
-        company1.fire("Danila", "Shikalov", "Manager");
+        company1.fire("Shikalov", "Danila", "Manager");
         company1.PrintList();
     }
 }

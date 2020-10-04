@@ -1,7 +1,7 @@
 package com.company.practice78;
 
 public class Manager implements EmployeePosition {
-    private double count = 115000 + (Math.random() * 140000);
+    private double count = 115000 + (Math.random() * 25000);
 
     public double getCount() {
         return count;

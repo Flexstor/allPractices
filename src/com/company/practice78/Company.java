@@ -27,7 +27,7 @@ public class Company {
         return null;
     }
 
-    public void fire(String name, String surname, String position){
+    public void fire(String surname, String name, String position){
         employees.remove(searchForFire(name, surname, position));
     }
 
@@ -81,14 +81,14 @@ public class Company {
     public void PrintList(){
         for(Employee employee: employees){
             System.out.println(employee.getSurname() + " " + employee.getName() + " - " + employee.getPosition().getJobTitle() + " " +
-                    (int)employee.getPosition().calcSalary(employee.getSalary()) + " рублей");
+                    (int)employee.getPosition().calcSalary(employee.getFixSalary()) + " рублей");
         }
     }
 
     public void PrintList(List<Employee> list){
         for(Employee employee: list){
             System.out.println(employee.getSurname() + " " + employee.getName() + " - " + employee.getPosition().getJobTitle() + " " +
-            (int)employee.getPosition().calcSalary(employee.getSalary()) + " рублей");
+            (int)employee.getPosition().calcSalary(employee.getFixSalary()) + " рублей");
         }
     }
 }

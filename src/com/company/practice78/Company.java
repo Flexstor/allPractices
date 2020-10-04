@@ -88,7 +88,7 @@ public class Company {
     public void PrintList(List<Employee> list){
         for(Employee employee: list){
             System.out.println(employee.getSurname() + " " + employee.getName() + " - " + employee.getPosition().getJobTitle() + " " +
-            (int)employee.getPosition().calcSalary(employee.getFixSalary()) + " рублей");
+                    (int)employee.getPosition().calcSalary(employee.getFixSalary()) + " рублей");
         }
     }
 }

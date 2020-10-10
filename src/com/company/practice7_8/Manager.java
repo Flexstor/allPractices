@@ -1,4 +1,4 @@
-package com.company.practice78;
+package com.company.practice7_8;
 
 public class Manager implements EmployeePosition {
     private double count = 115000 + (Math.random() * 25000);

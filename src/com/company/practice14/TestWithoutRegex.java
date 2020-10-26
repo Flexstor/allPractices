@@ -22,7 +22,7 @@ public class TestWithoutRegex {
         String[] newByRes = rules.values().toArray(new String[rules.size()]);
 
         for (int i = 0; i < rules.size(); i++) {
-            str = str.replaceAll(oldByRes[i], newByRes[i] + " ");
+            str = str.replaceAll(oldByRes[i], " " + newByRes[i] + " ");
         }
         System.out.println("Текст с заменами по правилам: "+ "\u001B[36m" + str.replace(" ", ""));
     }

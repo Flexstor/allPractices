@@ -7,10 +7,10 @@ public class Graph {
     private final ArrayList<State> stateList = new ArrayList<>();
     private final HashMap<Integer, String> transitionAction = new HashMap<>();
     private State S1 = new State(0, 1, 1, 4);
-    private State S2 = new State( 3 ,2,  5 ,3);
-    private State S3 = new State(5 ,3, 1,4);
-    private State S4 = new State(2, 2,4,4);
-    private State S5 = new State(4, 0,2,2);
+    private State S2 = new State(3, 2, 5, 3);
+    private State S3 = new State(5, 3, 1, 4);
+    private State S4 = new State(2, 2, 4, 4);
+    private State S5 = new State(4, 0, 2, 2);
     private Integer currentState = 0;
 
     public Graph() {

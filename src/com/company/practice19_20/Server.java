@@ -56,15 +56,17 @@ public class Server {
                 }
 
                 for (int i = 0; i < addresses.size(); i++) {
-                    toPacket = new DatagramPacket(toMessage.toString().getBytes(),
-                            0,
-                            toMessage.toString().getBytes().length,
-                            addresses.get(i),
-                            ports.get(i));
-                    try {
-                        socket.send(toPacket);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (!(packet.getAddress() == addresses.get(i) && packet.getPort() == ports.get(i))) {
+                        toPacket = new DatagramPacket(toMessage.toString().getBytes(),
+                                0,
+                                toMessage.toString().getBytes().length,
+                                addresses.get(i),
+                                ports.get(i));
+                        try {
+                            socket.send(toPacket);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 

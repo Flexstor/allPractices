@@ -23,9 +23,6 @@ public class Server {
                 0,
                 buffer.length);
 
-        File file = new File("src/com/company/practice19_20/history.txt");
-        file.createNewFile();
-
         System.out.println("Chat for chatting" + "\n");
 
         Thread server = new Thread(() -> {
@@ -39,8 +36,6 @@ public class Server {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Address: " + packet.getAddress());
-                System.out.println("Port: " + packet.getPort());
                 String message = new String(buffer, 0, packet.getLength());
                 date = new Date();
                 toMessage.append(dateFormat.format(date) + " | ");
@@ -70,7 +65,16 @@ public class Server {
                     }
                 }
 
+                System.out.println("Address: " + packet.getAddress());
+                System.out.println("Port: " + packet.getPort());
                 System.out.println(toMessage + "\n");
+
+                File file = new File("src/com/company/practice19_20/history.txt");
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 history.append(toMessage.toString() + "\n");
                 try (PrintWriter writerFile = new PrintWriter(file)) {
                     writerFile.write(history.toString());

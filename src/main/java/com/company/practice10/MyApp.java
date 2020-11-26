@@ -35,8 +35,8 @@ public class MyApp extends JFrame {
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
                                                 GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(textFieldB)
-                                .addComponent(label))
-                .addComponent(buttonD))
+                                .addComponent(label)))
+                .addComponent(buttonD)
         );
 
         layout.linkSize(SwingConstants.HORIZONTAL, buttonP, buttonM, buttonS, buttonD);
@@ -67,7 +67,7 @@ public class MyApp extends JFrame {
         textFieldB.setToolTipText("Второе число");
         textFieldB.setFont(new Font("Dialog", Font.PLAIN, 25));
         buttonP.setPreferredSize(new Dimension(45, 45));
-        label.setFont(new Font("Helvetica-Light", Font.PLAIN, 18));
+        label.setFont(new Font("Helvetica-Light", Font.PLAIN, 16));
 
         setTitle("Калькулятор");
         setSize(400, 500);

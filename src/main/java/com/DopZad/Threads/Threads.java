@@ -1,4 +1,4 @@
-package com.company.DopZad.Threads;
+package com.DopZad.Threads;
 
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;

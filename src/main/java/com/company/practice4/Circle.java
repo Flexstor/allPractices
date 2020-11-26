@@ -1,7 +1,7 @@
 package com.company.practice4;
 
 public class Circle extends Shape{
-    protected double radius = 1;
+    protected double radius;
 
     public Circle(double radius, String color, boolean filled) {
         super(color, filled);

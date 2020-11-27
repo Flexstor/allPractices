@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "data": "phone",
+    "isGood": true,
+    "description": "white"
+  },
+  {
+    "id": 2,
+    "data": "car",
+    "isGood": false,
+    "description": "with dizel"
+  },
+  {
+    "id": 3,
+    "data": "box",
+    "isGood": false,
+    "description": "small"
+  }
+]

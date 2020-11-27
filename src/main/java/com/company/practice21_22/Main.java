@@ -42,7 +42,7 @@ public class Main {
                     case 1:
                         List<Item> items = itemsStore.getAll();
                         for (int i = 0; i < items.size(); i++) {
-                            System.out.println(items.get(i).toString());
+                            System.out.println(items.get(i).toStringNotDes());
                         }
                         break;
                     case 2:

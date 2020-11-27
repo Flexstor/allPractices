@@ -55,6 +55,14 @@ public class Item {
                 '}';
     }
 
+    public String toStringNotDes() {
+        return "Item{" +
+                "id=" + id +
+                ", data='" + data + '\'' +
+                ", isGood=" + isGood +
+                '}';
+    }
+
     public String toStringLocal()
     {
         return "  {" +

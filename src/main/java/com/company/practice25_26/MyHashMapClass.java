@@ -1,60 +1,91 @@
 package com.company.practice25_26;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 
-public class MyHashMapClass<K, V> implements HashMapInterface<K, V>, Iterator<V> {
-    private LinkedList<Item<K, V>> map = new LinkedList<>();
-    int currentIndex = 0;
+public class MyHashMapClass<K, V> implements HashMapInterface<K, V> {
+    private ArrayList<ArrayList<Item<K, V>>> hashMap;
+    private final int hashMapSize = 16;
+
+    public MyHashMapClass() {
+        hashMap = new ArrayList<>();
+        for (int i = 0; i < hashMapSize; i++) {
+            hashMap.add(new ArrayList<>());
+        }
+    }
+
+    private int hashFunction(K key) {
+        return key.hashCode() % hashMapSize;
+    }
 
     @Override
     public void add(K key, V value) {
-        Item<K, V> item = new Item<>(key, value);
         boolean keyRepeat = false;
-        if (map.size() == 0) {
-            map.addFirst(item);
-        }
-        else {
-            for (Item<K, V> i : map) {
-                if (i.getKey().equals(key)) {
-                    i.setValue(value);
+        int index = hashFunction(key);
+        if (hashMap.get(index).size() == 0) {
+            hashMap.get(index).add(new Item<>(key, value));
+        } else {
+            for (int i = 0; i < hashMap.get(index).size(); i++) {
+                if (hashMap.get(index).get(i).getKey().equals(key)) {
+                    hashMap.get(index).set(i, new Item<>(key, value));
                     keyRepeat = true;
                     break;
                 }
             }
             if (keyRepeat == false) {
-                map.add(item);
+                hashMap.get(index).add(new Item<>(key, value));
             }
         }
     }
 
     @Override
     public V get(K key) {
-        for (Item<K, V> i : map) {
-            if (i.getKey().equals(key))
-                return i.getValue();
+        int index = hashFunction(key);
+        for (int i = 0; i < hashMap.get(index).size(); i++) {
+            if (hashMap.get(index).get(i).getKey().equals(key)) {
+                return hashMap.get(index).get(i).getValue();
+            }
         }
         return null;
     }
 
     @Override
     public V remove(K key) {
-        map.removeIf(i -> (i.getKey().equals(key)));
+        int index = hashFunction(key);
+        for (int i = 0; i < hashMap.get(index).size(); i++) {
+            if (hashMap.get(index).get(i).getKey().equals(key)) {
+                Object temp = hashMap.get(index).get(i).getValue();
+                hashMap.get(index).remove(hashMap.get(index).get(i));
+                return (V) temp;
+            }
+        }
         return null;
     }
 
     @Override
     public Iterator<V> iterator() {
-        return this;
+        return new ValueIterator<V>();
     }
 
-    @Override
-    public boolean hasNext() {
-        return currentIndex < map.size();
-    }
+    private class ValueIterator<V> implements Iterator<V> {
+        private int currentIndex = 0;
+        private int currentArray = 0;
 
-    @Override
-    public V next() {
-        return map.get(currentIndex++).getValue();
+        @Override
+        public boolean hasNext() {
+            if(currentIndex == hashMap.get(currentArray).size()) {
+                currentIndex = 0;
+                currentArray++;
+                while (currentArray < hashMapSize && hashMap.get(currentArray).size() == 0) {
+                    currentArray++;
+                }
+            }
+            return currentArray < hashMapSize;
+        }
+
+        @Override
+        public V next() {
+            return (V) hashMap.get(currentArray).get(currentIndex++).getValue();
+        }
     }
 }
